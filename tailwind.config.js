@@ -29,6 +29,18 @@ module.exports = {
       '5xl': "3rem",
       '6xl': "4rem"
     },
+    colors: {
+      'white': '#f6f6f6',
+      'blue': '#1fb6ff',
+      'purple': '#7e5bef',
+      'pink': '#ff49db',
+      'orange': '#ff7849',
+      'green': '#13ce66',
+      'yellow': '#ffc82c',
+      'gray-dark': '#273444',
+      'gray': '#8492a6',
+      'gray-light': '#d3dce6',
+    },
     /* We override the default font-families with our own default prefs  */
     fontFamily: {
       'sans':['-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Arial', 'sans-serif'],

@@ -1,3 +1,5 @@
+module Link = Next.Link
+
 type props = {
   msg: string,
   href: string,
@@ -5,13 +7,15 @@ type props = {
 
 let default = (props: props) =>
   <div>
+    <Link href="/posts/1"> {React.string("Post 1")} </Link>
+    <Link href="/posts/2"> {React.string("Post 2")} </Link>
     {React.string(props.msg)}
-    <a href=props.href target="_blank"> {React.string("`src/Examples.res`")} </a>
+    // <a href=props.href target="_blank"> {React.string("`src/Post [slug].res`")} </a>
   </div>
 
 let getServerSideProps = _ctx => {
   let props = {
-    msg: "This page was rendered with getServerSideProps. You can find the source code here: ",
+    msg: "Posts Page: ",
     href: "https://github.com/ryyppy/nextjs-default/tree/master/src/Examples.res",
   }
   Js.Promise.resolve({"props": props})

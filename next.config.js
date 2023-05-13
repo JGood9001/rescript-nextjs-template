@@ -1,12 +1,15 @@
 const bsconfig = require('./bsconfig.json');
 const fs = require("fs");
 
-const transpileModules = ["rescript"].concat(bsconfig["bs-dependencies"]);
+// Fails to run the dev server with this line uncommented.
+// And removing it fixes that + the prod build works fine.
+// const transpileModules = ["rescript"].concat(bsconfig["bs-dependencies"]);
+const transpileModules = []
 const withTM = require("next-transpile-modules")(transpileModules);
 
 const isWebpack5 = true;
 const config = {
-  target: "serverless",
+  // target: "serverless", deprecated https://nextjs.org/docs/messages/deprecated-target-config
   pageExtensions: ["jsx", "js"],
   env: {
     ENV: process.env.NODE_ENV,
@@ -38,9 +41,17 @@ const config = {
     }
     return config
   },
-  future: {
-    webpack5: isWebpack5
-  }
+  // - warn
+  // The root value has an unexpected property, future, which is not in the list of allowed properties:
+  // (amp, analyticsId, assetPrefix, basePath, cleanDistDir, compiler, compress, configOrigin, crossOrigin,
+  //  devIndicators, distDir, env, eslint, excludeDefaultMomentLocales, experimental, exportPathMap, generateBuildId,
+  //  generateEtags, headers, httpAgentOptions, i18n, images, modularizeImports, onDemandEntries, optimizeFonts, output,
+  //  outputFileTracing, pageExtensions, poweredByHeader, productionBrowserSourceMaps, publicRuntimeConfig, reactStrictMode,
+  //  redirects, rewrites, sassOptions, serverRuntimeConfig, skipMiddlewareUrlNormalize, skipTrailingSlashRedirect,
+  //  staticPageGenerationTimeout, swcMinify, target, trailingSlash, transpilePackages, typescript, useFileSystemPublicRoutes, webpack).
+  // future: {
+  //   webpack5: isWebpack5
+  // }
 };
 
 module.exports = withTM(config);

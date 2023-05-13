@@ -5,16 +5,17 @@ module Navigation = {
   let make = () =>
     <nav className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
       <Link href="/">
-        <a className="flex items-center w-1/3">
           <img className="w-5" src="/static/zeit-black-triangle.svg" />
           <span className="text-xl ml-2 align-middle font-semibold">
             {React.string("Next")} <span className="text-orange-800"> {React.string(" + ReScript")} </span>
           </span>
-        </a>
       </Link>
       <div className="flex w-2/3 justify-end">
-        <Link href="/"> <a className="px-3"> {React.string("Home")} </a> </Link>
-        <Link href="/examples"> <a className="px-3"> {React.string("Examples")} </a> </Link>
+        <Link href="/"> {React.string("Home")} </Link>
+        <Link href="/about"> {React.string("About")} </Link>
+        <Link href="/posts"> {React.string("Posts")} </Link>
+        // Link with embedded a tag is deprecated
+        // <Link href="/examples"> <a className="px-3"> {React.string("Examples")} </a> </Link>
         <a
           className="px-3 font-bold"
           target="_blank"
