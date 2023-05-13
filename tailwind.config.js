@@ -51,5 +51,7 @@ module.exports = {
   variants: {
     width: ['responsive']
   },
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
 }

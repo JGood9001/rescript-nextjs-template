@@ -1,8 +1,15 @@
 module Link = Next.Link
+module Head = Next.Head
 
 module Navigation = {
   @react.component
-  let make = () =>
+  let make = () => <>
+    <Head>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css"
+      ></link>
+    </Head>
     <nav className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">
       <Link href="/">
           <img className="w-5" src="/static/zeit-black-triangle.svg" />
@@ -24,6 +31,7 @@ module Navigation = {
         </a>
       </div>
     </nav>
+    </>
 }
 
 @react.component

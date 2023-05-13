@@ -14,6 +14,21 @@ type props = {
   pageProps: pageProps,
 }
 
+// https://v0.mdxjs.com/guides/syntax-highlighting
+let components: MDX.components = {
+  pre: props =>
+    <div>{props.children}</div>
+    // <div>{React.string("dafuq")}</div>
+  ,
+  code: props => {
+    Js.log("code's props?")
+    Js.log(props)
+    // {className: 'language-res', children: 'let f = () => Js.log("send it!")\n'}
+    // <pre className="blue" />
+    <pre>{props.children}</pre>
+    // <pre className="blue" />
+  }
+}
 
 // We are not using `@react.component` since we will never
 // use <App/> within our ReScript code.
@@ -30,6 +45,33 @@ let default = (props: props): React.element => {
     <MainLayout>
       <h1 className="font-bold"> {React.string("Examples Section")} </h1> <div> content </div>
     </MainLayout>
-  | _ => <MainLayout> content </MainLayout>
+    // TODO:
+    // wrap classname prose around mdx components only
+    // https://tailwindcss.com/docs/typography-plugin
+  | _ =>  <MainLayout>
+            // LLO Not really sure how to fix this, keep getting a hydration warning error
+            // anytime the components are rendered via MDXProvider
+            // This issue never came up in this guide: https://v0.mdxjs.com/guides/syntax-highlighting
+            // And this error is a React specific thing, rather than it being the fault of rescript
+            // <MDX.MDXProvider components={components}>
+            // This worked with no issues:
+            // https://dev.to/mikeesto/next-js-mdx-w-code-highlighting-16fi
+            // more themes to pick from -> https://github.com/PrismJS/prism-themes
+              <article className="prose lg:prose-xl"> content </article>
+            // </MDX.MDXProvider>
+          </MainLayout>
   }
 }
+
+// import React from 'react'
+// import {MDXProvider} from '@mdx-js/tag'
+// const components = {
+//   pre: props => <div {...props} />,
+//   code: props => <pre style={{ color: 'tomato' }} {...props} />
+// }
+// export default props => (
+//   <MDXProvider components={components}>
+//     <main {...props}>
+//     </main>
+//   </MDXProvider>
+// )

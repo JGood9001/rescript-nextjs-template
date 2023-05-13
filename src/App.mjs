@@ -16,7 +16,9 @@ function $$default(props) {
                   }, "Examples Section"), React.createElement("div", undefined, content));
   } else {
     return React.createElement(MainLayout.make, {
-                children: content
+                children: React.createElement("article", {
+                      className: "prose lg:prose-xl"
+                    }, content)
               });
   }
 }

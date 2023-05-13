@@ -7,10 +7,26 @@ const fs = require("fs");
 const transpileModules = []
 const withTM = require("next-transpile-modules")(transpileModules);
 
+// https://nextjs.org/blog/markdown
+// syntax highlighting:
+// https://v0.mdxjs.com/guides/syntax-highlighting
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+  options: {
+    // If you use remark-gfm, you'll need to use next.config.mjs
+    // as the package is ESM only
+    // https://github.com/remarkjs/remark-gfm#install
+    remarkPlugins: [require("remark-prism")],
+    rehypePlugins: [],
+    // If you use `MDXProvider`, uncomment the following line.
+    // providerImportSource: "@mdx-js/react",
+  },
+});
+
 const isWebpack5 = true;
 const config = {
   // target: "serverless", deprecated https://nextjs.org/docs/messages/deprecated-target-config
-  pageExtensions: ["jsx", "js"],
+  pageExtensions: ["jsx", "js", "mdx"],
   env: {
     ENV: process.env.NODE_ENV,
   },
@@ -54,4 +70,5 @@ const config = {
   // }
 };
 
-module.exports = withTM(config);
+// module.exports = withTM(config);
+module.exports = withMDX(config);
