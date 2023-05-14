@@ -7,7 +7,7 @@ module Navigation = {
     <Head>
       <link
         rel="stylesheet"
-        href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css"
+        href="https://unpkg.com/prism-themes@1.9.0/themes/prism-holi-theme.min.css"
       ></link>
     </Head>
     <nav className="p-2 h-12 flex border-b border-gray-200 justify-between items-center text-sm">

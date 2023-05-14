@@ -1,7 +1,7 @@
 import PostsRes from "src/pages/posts/Posts.mjs";
 
 // This can be re-exported as is (no Fast-Refresh issues)
-export { getServerSideProps } from "src/pages/posts/Posts.mjs";
+export { getStaticProps } from "src/pages/posts/Posts.mjs";
 
 // Note:
 // We need to wrap the make call with

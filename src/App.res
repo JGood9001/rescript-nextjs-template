@@ -41,6 +41,12 @@ let default = (props: props): React.element => {
   let content = React.createElement(component, pageProps)
 
   switch router.route {
+    // TODO: Match on /posts/[slug]
+    // and only wrap content with article then.
+    // There's also this consideration (at least for Title/Subtitle styling in the header of the blog post)
+    // https://www.npmjs.com/package/next-mdx-enhanced
+    // But you could just create a React component and pass down the details you want to display in the header
+    // and call it a day...
   | "/examples" =>
     <MainLayout>
       <h1 className="font-bold"> {React.string("Examples Section")} </h1> <div> content </div>
@@ -57,6 +63,11 @@ let default = (props: props): React.element => {
             // This worked with no issues:
             // https://dev.to/mikeesto/next-js-mdx-w-code-highlighting-16fi
             // more themes to pick from -> https://github.com/PrismJS/prism-themes
+            // href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css"
+            // href="https://unpkg.com/prism-themes@1.9.0/themes/prism-night-owl.min.css"
+            // href="https://unpkg.com/prism-themes@1.9.0/themes/prism-synthwave84.min.css"
+            // href="https://unpkg.com/prism-themes@1.9.0/themes/prism-holi-theme.min.css"
+            // href="https://unpkg.com/prism-themes@1.9.0/themes/prism-z-touch.min.css"
               <article className="prose lg:prose-xl"> content </article>
             // </MDX.MDXProvider>
           </MainLayout>

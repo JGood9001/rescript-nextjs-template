@@ -1,3 +1,10 @@
+---
+title: "MDX Page"
+slug: "mdx-page"
+description: "testing 123."
+date: "May 14, 2023"
+---
+
 import Counter from "src/components/Counter.mjs";
 
 # My MDX page
@@ -14,4 +21,8 @@ Checkout my React component:
 
 ```res
 let f = () => Js.log("send it!")
+
+module type REPLLogic = {
+    let prompt: () => ()
+}
 ```

@@ -7,7 +7,7 @@ import Link from "next/link";
 function MainLayout$Navigation(Props) {
   return React.createElement(React.Fragment, undefined, React.createElement(Head, {
                   children: React.createElement("link", {
-                        href: "https://unpkg.com/dracula-prism/dist/css/dracula-prism.css",
+                        href: "https://unpkg.com/prism-themes@1.9.0/themes/prism-holi-theme.min.css",
                         rel: "stylesheet"
                       })
                 }), React.createElement("nav", {
